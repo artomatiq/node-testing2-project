@@ -11,12 +11,21 @@ router.get('/', async (req, res, next) => {
         .catch(next)
 })
 
-router.get('/:id', (req, res, next) => {
-    
+router.get('/:id', async (req, res, next) => {
+    await Soldier.getByID(req.params.id)
+        .then (soldier => {
+            console.log('soldier', soldier)
+            res.status(200).json(soldier)
+        })
+        .catch(next)
 })
 
-router.post('/', (req, res, next) => {
-    
+router.post('/', async (req, res, next) => {
+    await Soldier.insert(req.body)
+        .then (soldier => {
+            res.status(201).json(soldier)
+        })
+        .catch (next)
 })
 
 
