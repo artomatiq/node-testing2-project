@@ -14,7 +14,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     await Soldier.getByID(req.params.id)
         .then (soldier => {
-            console.log('soldier', soldier)
             res.status(200).json(soldier)
         })
         .catch(next)

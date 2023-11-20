@@ -28,11 +28,11 @@ describe('[GET] /soldiers/id', () => {
 })
 
 describe('[POST] /soldiers', () => {
-    test.only('posts a soldier', async () => {
+    test('posts a soldier', async () => {
         const newSoldier = {soldier_name: 'Bobby'}
         await request(server).post('/api/soldiers').send(newSoldier)
         expect(await db('soldiers')).toHaveLength(4)
-        expect(Soldier.getByName(newSoldier.name)).toMatchObject(newSoldier)
+        expect(await Soldier.getByName(newSoldier.soldier_name)).toMatchObject(newSoldier)
     })
     test('returns posted soldier', async () => {
         const newSoldier = {soldier_name: 'Bobby'}

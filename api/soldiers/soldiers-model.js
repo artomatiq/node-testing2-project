@@ -23,7 +23,7 @@ async function getByName (name) {
 }
 
 async function insert (soldier) {
-    const id = await db('soldiers').insert(soldier)
+    const [id] = await db('soldiers').insert(soldier)
     return await getByID(id)
 }
 
