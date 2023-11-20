@@ -3,7 +3,7 @@
  * @returns { Promise<void> } 
  */
 
-const clean = require('knex-cleaner')
+const {clean} = require('knex-cleaner')
 
 
 exports.seed = async function(knex) {
